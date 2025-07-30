@@ -40,7 +40,7 @@ jobs:
 
       - name: Setup Python Version
         uses: actions/setup-python@v4
-        
+
         # uses: actions/setup-python@v4
         # Diz ao runner "use a ação oficial setup-python na versão v4".
         # Essa action oficial, mantida pelo GitHub, instala e configura a versão do 
@@ -49,28 +49,28 @@ jobs:
         # Define qual versão do Python vai ser instalada no runner
         with:
           python-version: '3.11'
-        
+
         # criando o nosso ambiente virtual, pois coloquei o meu venv no .gitignore 
-        # e acabei esquecendo deste detaalhe rsrsrs..
+        # e acabei esquecendo deste detalhe rsrsrs..
         # por isso deu error 
 
       - name: Criar ambiente virtual
         working-directory: ./Ciência_Dados/codes
         run: python -m venv .venv        
 
-      - name: Ativando ambiente virtual e instalando dependências
+      - name: Instalar dependências no ambiente virtual
         # Roda todos os comandos dentro da pasta codes
         working-directory: ./Ciência_Dados/codes
         run: |
-          source .venv/bin/activate
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install numpy
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install -r requirements.txt
+          .venv/bin/pip install numpy
 
-      - name: Executando script dimensionalidade
+      - name: Executar script dimensionalidade usando o python do venv
         # Roda o script python na pasta src/dimensionalidade
         working-directory: ./Ciência_Dados/codes/src/dimensionalidade
-        run: python dimensao.py
+        # Executando com o python do ambiente virtual e não global
+        run: ../../.venv/bin/python dimensao.py
 
 # OBSERVAÇÕES
 
@@ -93,16 +93,19 @@ jobs:
 
 # Comentários # podem ficar entre steps ou dentro, mas não quebram blocos
 
-#  símbolo | é um indicador de bloco literal para strings multilinhas.
+# símbolo | é um indicador de bloco literal para strings multilinhas.
 
 # Ele serve para dizer que o conteúdo que vem logo abaixo será tratado como texto
 # exatamente como está, incluindo quebras de linha.
 
 # Equivale a escrever o comando shell assim:
 
-# source .venv/bin/activate
-# python -m pip install --upgrade pip
-# pip install -r requirements.txt
+# .venv/bin/pip install --upgrade pip
+# .venv/bin/pip install -r requirements.txt
 
 # O parâmetro working-directory: serve para mudar a pasta atual onde o comando vai ser 
 # executado, sem precisar fazer um comando cd manual no run:.
+
+# Agora Cloquei os scripts python para serem executados e intepretados pelo
+# interpretador com o python do ambiente virtula é executado 
+# usando ../../.venv/bin/python, o Python do ambiente virtual.
