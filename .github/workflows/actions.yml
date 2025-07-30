@@ -50,23 +50,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: ir para pasta codes
-        run: cd ~/Ciência_Dados/codes
+      - name: Ativando ambiente virtual e instalando dependências
+        # Roda todos os comandos dentro da pasta codes
+        working-directory: ./Ciência_Dados/codes
+        run: |
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Ativando ambiente virtual
-        run: source .venv/bin/activate
-
-      - name: atualizando o pacote pip
-        run: python -m pip install --upgrade
-
-      - name: instalando depedências
-        run: pip install -r requirements.txt
-
-      - name: ir para pasta dimensionalidade
-        run: cd ~/src/dimensionalidade
-
-      - name: Executando script python
-        run: dimensao.py
+      - name: Executando script dimensionalidade
+        # Roda o script python na pasta src/dimensionalidade
+        working-directory: ./src/dimensionalidade
+        run: python dimensao.py
 
 # Cada step:
 
@@ -77,7 +72,16 @@ jobs:
 # Se usar uses:, fica junto do name:
 
 # Comentários # podem ficar entre steps ou dentro, mas não quebram blocos
-    
 
+#  símbolo | é um indicador de bloco literal para strings multilinhas.
+
+# Ele serve para dizer que o conteúdo que vem logo abaixo será tratado como texto
+# exatamente como está, incluindo quebras de linha.
+
+# Equivale a escrever o comando shell assim:
+
+# source .venv/bin/activate
+# python -m pip install --upgrade pip
+# pip install -r requirements.txt
 
 
