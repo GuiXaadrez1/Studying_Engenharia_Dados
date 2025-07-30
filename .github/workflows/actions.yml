@@ -49,6 +49,14 @@ jobs:
         # Define qual versão do Python vai ser instalada no runner
         with:
           python-version: '3.11'
+        
+        # criando o nosso ambiente virtual, pois coloquei o meu venv no .gitignore 
+        # e acabei esquecendo deste detaalhe rsrsrs..
+        # por isso deu error 
+        
+      - name: Criar ambiente virtual
+        working-directory: ./Ciência_Dados/codes
+        run: python -m venv .venv        
 
       - name: Ativando ambiente virtual e instalando dependências
         # Roda todos os comandos dentro da pasta codes
@@ -84,4 +92,5 @@ jobs:
 # python -m pip install --upgrade pip
 # pip install -r requirements.txt
 
-
+# O parâmetro working-directory: serve para mudar a pasta atual onde o comando vai ser 
+# executado, sem precisar fazer um comando cd manual no run:.
