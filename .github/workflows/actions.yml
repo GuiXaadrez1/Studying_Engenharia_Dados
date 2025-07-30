@@ -70,15 +70,17 @@ jobs:
         # Roda o script python na pasta src/dimensionalidade
         working-directory: ./Ciência_Dados/codes/src/dimensionalidade
         # Executando com o python do ambiente virtual e não global
-        run: ../../.venv/bin/python dimensao.py
+        run: |
+            pwd  # Mostra onde está!
+            ../../.venv/bin/python dimensao.py > log.txt
         
         # colocando um log com limmite de um dia com retention-days: 1
       - name: Upload do log como artefato com retenção de 1 dia
         uses: actions/upload-artifact@v4
         with:
-          name: log-dimensao
-          path: ./Ciência_Dados/codes/src/dimensionalidade/log.txt
-          retention-days: 1
+            name: log-dimensao
+            path: Ciência_Dados/codes/src/dimensionalidade/log.txt
+            retention-days: 1
 
 # OBSERVAÇÕES
 
