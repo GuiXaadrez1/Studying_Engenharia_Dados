@@ -126,7 +126,6 @@ Exemplo:
 
 ## Como fazer uma limpeza de dados
 
-
 ## Referências:
 
 - https://ibpad.com.br/comunicacao/uma-visao-geral-sobre-a-limpeza-dos-dados/
