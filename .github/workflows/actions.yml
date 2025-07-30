@@ -53,7 +53,7 @@ jobs:
         # criando o nosso ambiente virtual, pois coloquei o meu venv no .gitignore 
         # e acabei esquecendo deste detaalhe rsrsrs..
         # por isso deu error 
-        
+
       - name: Criar ambiente virtual
         working-directory: ./Ciência_Dados/codes
         run: python -m venv .venv        
@@ -68,8 +68,19 @@ jobs:
 
       - name: Executando script dimensionalidade
         # Roda o script python na pasta src/dimensionalidade
-        working-directory: ./src/dimensionalidade
+        working-directory: ./Ciência_Dados/codes/src/dimensionalidade
         run: python dimensao.py
+
+# OBSERVAÇÕES
+
+# No GitHub Actions, o repositório é clonado dentro de um path padrão que inclui o nome do
+# repo duas vezes, por exemplo:
+
+# /home/runner/work/<repo>/<repo>/
+
+# No meu caso
+
+# /home/runner/work/Studying_Engenharia_Dados/Studying_Engenharia_Dados/
 
 # Cada step:
 
