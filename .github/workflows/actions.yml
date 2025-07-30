@@ -71,6 +71,14 @@ jobs:
         working-directory: ./Ciência_Dados/codes/src/dimensionalidade
         # Executando com o python do ambiente virtual e não global
         run: ../../.venv/bin/python dimensao.py
+        
+        # colocando um log com limmite de um dia com retention-days: 1
+      - name: Upload do log como artefato com retenção de 1 dia
+        uses: actions/upload-artifact@v4
+        with:
+          name: log-dimensao
+          path: ./Ciência_Dados/codes/src/dimensionalidade/log.txt
+          retention-days: 1
 
 # OBSERVAÇÕES
 
@@ -109,3 +117,23 @@ jobs:
 # Agora Cloquei os scripts python para serem executados e intepretados pelo
 # interpretador com o python do ambiente virtula é executado 
 # usando ../../.venv/bin/python, o Python do ambiente virtual.
+
+# actions/upload-artifact@v4 -> pegar um arquivo (ou pasta) gerado no runner
+# mandar pro servidor do GitHub Actions como um artefato anexado à execução (run).
+# define os parâmetros de entrada da Action.
+# Cada Action pode ter suas próprias inputs obrigatórias ou opcionais.
+# name: log-dimensao
+# Esse é o nome que o artefato vai ter no GitHub Actions.
+# Quando o workflow terminar, você verá um link para baixar log-dimensao.zip.
+# Pode ser qualquer nome — serve só pra identificar o arquivo na UI do Actions.
+# path: ./Ciência_Dados/codes/src/dimensionalidade/log.txt
+# path: é o caminho no runner para o(s) arquivo(s) que você quer subir.
+# Pode ser:
+# Um arquivo (log.txt)
+# Uma pasta inteira (./build/)
+# Um glob pattern (./reports/**/*.xml)
+# Neste caso: está pegando o log.txt que foi gerado pelo seu python dimensao.py > log.txt.
+# retention-days: 1
+# Controla quantos dias o GitHub vai manter este artefato disponível para download.
+# Após 1 dia, o GitHub apaga automaticamente o artefato para liberar espaço.
+# Útil pra logs temporários, builds descartáveis, etc.
