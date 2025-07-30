@@ -1,6 +1,6 @@
 vamos trabalhar com as seguintes ferramentas:
 
-linguagem de programação python (para que, gosta de codar)
+linguagem de programação python (para que, gosta de codar) em um ambiente virtural (venv)
 
 com as libs: pandas,pandasGUI opencv, matplotlib, numpy, openpyxl, json, request
 
