@@ -1,0 +1,83 @@
+# Dando nome para o nossa Action
+name: Python Script WorkFlows
+
+# Definindo um evento ou gatilho
+on:
+  push: # se fizer um push
+    branches: # nesta branch
+      - main
+
+  pull_request: # se fizer um pull request
+    branches: # nesta branch
+      - main
+
+# executando um bloco de tarefas!
+jobs:
+  # bloco de tarefas 1
+  job1:
+    # escolhendo o nosso runner
+    runs-on: ubuntu-latest # lembrando ubuntu é uma distribuição do S.O Linux
+
+    # tarefa dentro de um bloco de tarefas
+    # É o bloco atômico de execução — cada step roda um comando ou uma ação (action).
+    steps:
+      # Colocando um nome descritivo que aparece nos logs do Action no GitHub
+      - name: Checkout repository
+        # Usa uma ação pronta do marketplace ou oficial.
+        uses: actions/checkout@v4
+
+        # actions -> Nome do dono do repositório no GitHub (github.com/actions/checkout).
+        # Nome da ação. É uma ação oficial, mantida pelo próprio GitHub.
+
+        # Essa ação foi criada especificamente para:
+        # ✅ Fazer clone/checkout do repositório onde o workflow está rodando.
+        # ✅ Preparar o workspace para os próximos passos (build, test, deploy).
+        # ✅ Trazer o código-fonte para dentro do runner virtual (máquina virtual Linux/Windows/Mac).
+
+        # Na prática, actions/checkout@v4 faz um clone do seu repositório Git dentro
+        # da máquina virtual (runner) que o GitHub Actions cria para rodar o seu
+        # pipeline CI/CD.
+
+      - name: Setup Python Version
+        uses: actions/setup-python@v4
+        
+        # uses: actions/setup-python@v4
+        # Diz ao runner "use a ação oficial setup-python na versão v4".
+        # Essa action oficial, mantida pelo GitHub, instala e configura a versão do 
+        # Python que seu workflow vai usar.
+
+        # Define qual versão do Python vai ser instalada no runner
+        with:
+          python-version: '3.11'
+
+      - name: ir para pasta codes
+        run: cd ~/Ciência_Dados/codes
+
+      - name: Ativando ambiente virtual
+        run: source .venv/bin/activate
+
+      - name: atualizando o pacote pip
+        run: python -m pip install --upgrade
+
+      - name: instalando depedências
+        run: pip install -r requirements.txt
+
+      - name: ir para pasta dimensionalidade
+        run: cd ~/src/dimensionalidade
+
+      - name: Executando script python
+        run: dimensao.py
+
+# Cada step:
+
+# Começa com -
+
+# Dentro dele, tudo indentado na mesma coluna
+
+# Se usar uses:, fica junto do name:
+
+# Comentários # podem ficar entre steps ou dentro, mas não quebram blocos
+    
+
+
+
