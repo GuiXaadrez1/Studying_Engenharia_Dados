@@ -1,0 +1,1 @@
+# Este arquivo.py visa explicar o conceito de discretização na prática

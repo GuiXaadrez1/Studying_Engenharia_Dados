@@ -1,2 +1,5 @@
 # ignorando pasta do ambiente virtual
 venv
+
+# ignorando arquivos.env
+.env

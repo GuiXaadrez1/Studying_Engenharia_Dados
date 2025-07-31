@@ -1,3 +1,5 @@
+# Este aquivo.py visa explicar o conceito de dimensionalidade na prática
+
 import numpy as np
 import pandas as pd
 import sys

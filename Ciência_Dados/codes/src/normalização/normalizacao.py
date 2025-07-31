@@ -1,0 +1,1 @@
+# Este arquivo.py tem como objetivo explicar o conceito de normalização na prática

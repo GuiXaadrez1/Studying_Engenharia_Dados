@@ -8,7 +8,7 @@ on:
       - main
 
   pull_request: # se fizer um pull request
-    branches: # nesta branch
+    branches: # nesta branchs
       - main
 
 # executando um bloco de tarefas!
