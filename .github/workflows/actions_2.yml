@@ -3,9 +3,9 @@ name: Python Script WorkFlows
 
 # Definindo um evento ou gatilho
 on:
-  push: # se fizer um push
-    branches: # nesta branch
-      - main
+  #push: # se fizer um push
+    #branches: # nesta branch
+      #- main
 
   pull_request: # se fizer um pull request
     branches: # nesta branchs
